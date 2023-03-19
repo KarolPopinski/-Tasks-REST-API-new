@@ -27,7 +27,9 @@ public class TaskController {
     }
     @GetMapping(value = "{taskId}")
     public TaskDto getTask(@PathVariable Long taskId) {
-        return new TaskDto(1L, "test title", "test_content");
+        Task task = service.findTaskById(taskId);
+        return taskMapper.mapToTaskDto(task);
+        //return new TaskDto(1L, "test title", "test_content");
     }
     @DeleteMapping
     public void deleteTask(Long taskId) {
