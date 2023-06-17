@@ -10,13 +10,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
-import java.util.Optional;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class SimpleEmailService {
     private final JavaMailSender javaMailSender;
+
     @Autowired
     private MailCreatorService mailCreatorService;
 
