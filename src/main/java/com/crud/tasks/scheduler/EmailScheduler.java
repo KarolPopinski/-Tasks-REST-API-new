@@ -15,12 +15,12 @@ public class EmailScheduler {
     private final TaskRepository taskRepository;
     private final AdminConfig adminConfig;
     private static final String SUBJECT = "Tasks: Once a day email";
-    //@Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 10000)
     @Scheduled(cron = "0 0 10 * * *")
     public void sendInformationEmail() {
         long size = taskRepository.count();
         String taskOrTasks = size == 1 ? "task" : "tasks";
-        simpleEmailService.send(
+        simpleEmailService.sendScheduledEmail(
                 new Mail(
                         adminConfig.getAdminMail(),
                         SUBJECT,
